@@ -373,3 +373,6 @@ export class DeleteUserFavoriteService {
   }
 }
 
+export class FetchApiDataService {
+  constructor() {}
+}
