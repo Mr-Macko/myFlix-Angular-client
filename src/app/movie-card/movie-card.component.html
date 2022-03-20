@@ -16,6 +16,13 @@
             <button
                 mat-button
                 color="primary"
+                (click)="
+                openDirector(
+                  movie.Director.Name,
+                  movie.Director.Bio,
+                  movie.Director.Birth
+                )
+              "
             >
                 Director
             </button>

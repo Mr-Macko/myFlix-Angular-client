@@ -3,6 +3,7 @@ import { GetAllMoviesService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 import { GenreComponent } from '../genre/genre.component';
+import { DirectorComponent } from '../director/director.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -48,6 +49,18 @@ export class MovieCardComponent implements OnInit {
       data: {
         Name: name,
         Description: description,
+      },
+      width: '500px',
+    });
+  }
+
+  //opens director dialog
+  openDirector(name: string, bio: string, birth: string): void {
+    this.dialog.open(DirectorComponent, {
+      data: {
+        Name: name,
+        Bio: bio,
+        Birth: birth,
       },
       width: '500px',
     });
