@@ -25,6 +25,7 @@ import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.componen
 import { GenreComponent } from './genre/genre.component';
 import { DirectorComponent } from './director/director.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UpdateUserProfileComponent } from './update-user-profile/update-user-profile.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     GenreComponent,
     DirectorComponent,
     UserProfileComponent,
+    UpdateUserProfileComponent,
   ],
   imports: [
     BrowserModule,

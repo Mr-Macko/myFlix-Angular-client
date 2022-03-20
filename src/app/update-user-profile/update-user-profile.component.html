@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Update Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.Username"
+            placeholder="Username"
+            type="text"
+            name="New Username"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.Password"
+            type="password"
+            placeholder="New Password"
+            name="New Password"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.Email"
+            type="email"
+            placeholder="Email@email.com"
+            name="New Email"
+            required
+          />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <input
+            matInput
+            [(ngModel)]="userData.Birthday"
+            type="date"
+            placeholder="Birthday"
+            name="New Birthday"
+          />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="editUserProfile()">
+        Confirm Changes
+      </button>
+      <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+  
