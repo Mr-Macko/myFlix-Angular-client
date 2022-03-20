@@ -21,6 +21,12 @@
             <button
                 mat-button
                 color="primary"
+                (click)="
+                openSynopsis(
+                  movie.Title,
+                  movie.ImagePath,
+                  movie.Description
+                )"
             >
                 Synopsis
             </button>
