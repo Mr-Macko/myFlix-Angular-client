@@ -1,3 +1,38 @@
+  <!-- Tool bar -->
+  <div style="width: 100vw">
+    <mat-toolbar style="text-align: center">
+      <h1 class="toolbar-title">myFlix</h1>
+      <button
+        mat-button
+        class="menu-button"
+        routerLink="movies"
+        (click)="goToMoviesPage()"
+      >
+        Movies
+      </button>
+      <button
+        mat-button
+        class="menu-button"
+        routerLink="profile"
+        (click)="goToProfilePage()"
+      >
+        Profile
+      </button>
+  
+      <button
+        mat-button
+        mat-button-color="primary"
+        style="text-align: right;"
+        class="menu-button"
+        routerLink="logout"
+        (click)="logout()"
+      >
+        Log out
+      </button>
+    </mat-toolbar>
+
+   
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 15px;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto; margin: 10px;">
         <mat-card-header>

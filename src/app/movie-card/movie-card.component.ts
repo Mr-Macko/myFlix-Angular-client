@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllMoviesService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
@@ -11,12 +12,13 @@ import { DirectorComponent } from '../director/director.component';
   styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
-
   movies: any [] = [];
+  opened = false;
 
   constructor(
-    public fetchMovies: GetAllMoviesService,
-    public dialog: MatDialog
+    public fetchMovies: FetchApiDataService,
+    public dialog: MatDialog,
+    public router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -63,6 +65,24 @@ export class MovieCardComponent implements OnInit {
         Birth: birth,
       },
       width: '500px',
+    });
+  }
+
+// Router...
+  // to movies
+  goToMoviesPage(): void {
+    this.router.navigate(['movies']);
+  }
+  // to profile
+  goToProfilePage(): void {
+    this.router.navigate(['profile']);
+  }
+
+  // for logout
+  logout(): void {
+    localStorage.clear();
+    this.router.navigate(['welcome']).then(() => {
+      // window.location.reload();
     });
   }
 
