@@ -38,6 +38,22 @@
         <mat-card-header>
         <mat-card-title>{{movie.Title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
+            <div class="favorite" style="align-self: top">
+                <mat-icon
+                  *ngIf="!isFavorited(movie._id)"
+                  (click)="handleFavorite(movie._id)"
+                  class="heart-icon"
+                >
+                  favorite_border
+                </mat-icon>
+                <mat-icon
+                  *ngIf="isFavorited(movie._id)"
+                  (click)="handleUnfavorite(movie._id)"
+                  class="heart-icon"
+                >
+                  favorite
+                </mat-icon>
+              </div>
         </mat-card-header>
         <img width="300px" src={{movie.ImagePath}} alt= {{movie.Title}} />
         <mat-card-actions>
@@ -73,7 +89,6 @@
             >
                 Synopsis
             </button>
-            <mat-icon>favorite_border</mat-icon>
         </mat-card-actions>
     </mat-card>
 </div>

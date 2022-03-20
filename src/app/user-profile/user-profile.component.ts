@@ -1,12 +1,8 @@
-/**
- * Renders a view of the current user's profile.
- */
-
  import { Component, OnInit } from '@angular/core';
  import { MatDialog } from '@angular/material/dialog';
  import { MatSnackBar } from '@angular/material/snack-bar';
  import { Router } from '@angular/router';
-//  import { UserUpdateFormComponent } from '../user-update-form/user-update-form.component';
+ import { UpdateUserProfileComponent } from '../update-user-profile/update-user-profile.component';
  import { FetchApiDataService } from '../fetch-api-data.service';
  
  @Component({
@@ -17,7 +13,6 @@
  export class UserProfileComponent implements OnInit {
    user: any = {};
    favorites: any[] = [];
-   opened = false;
  
    constructor(
      public fetchApiData: FetchApiDataService,
@@ -42,9 +37,9 @@
    }
  
   //  // Open dialog with user form component to update user details
-  //  updateUserDetails(): void {
-  //    this.dialog.open(UserUpdateFormComponent, { width: '500px' });
-  //  }
+   updateUserDetails(): void {
+     this.dialog.open(UpdateUserProfileComponent, { width: '500px' });
+   }
  
    // Get list of user favorites
    getFavorites(): void {
@@ -57,10 +52,7 @@
      });
    }
  
-   /**
-    * Deletes selected movie to user favorites.
-    * @param id id of selected movie
-    */
+    // Deletes selected movie to user favorites.
    deleteFavorite(id: string): void {
      this.fetchApiData.deleteFavorite(id).subscribe((res: any) => {
        this.snackBar.open(`Successfully removed from favorite movies.`, 'OK', {
@@ -71,9 +63,8 @@
      });
    }
  
-   /**
-    * Open confirmation to delete profile or cancel; if confirmed: deletes account, clears local storage, and reroutes to welcome screen.
-    */
+
+  // Open confirmation to delete profile or cancel; if confirmed: deletes account, clears local storage, and reroutes to welcome screen.
    deleteUser(): void {
      if (confirm('Are you sure? This cannot be undone.')) {
        this.fetchApiData.deleteUser().subscribe(

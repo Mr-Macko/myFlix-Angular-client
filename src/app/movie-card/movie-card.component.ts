@@ -13,20 +13,50 @@ import { DirectorComponent } from '../director/director.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any [] = [];
-  opened = false;
+  favorites: any[] = [];
 
   constructor(
-    public fetchMovies: FetchApiDataService,
+    public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public router: Router,
     ) { }
 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavorites();
   }
 
+    // Get list of user favorites
+    getFavorites(): void {
+      this.fetchApiData.getUser().subscribe((resp: any) => {
+        this.favorites = resp.FavoriteMovies;
+        // console.log(this.favorites);
+        return this.favorites;
+      });
+    }
+  
+    // Returns if movie id is in list of user's favorited movies.
+    isFavorited(id: string): boolean {
+      return this.favorites.includes(id);
+    }
+  
+    // Adds selected movie to user favorites.
+    handleFavorite(id: string): void {
+      this.fetchApiData.addFavorite(id).subscribe(() => {
+        this.getFavorites();
+      });
+    }
+  
+   
+    // Deletes selected movie to user favorites.
+    handleUnfavorite(id: string): void {
+      this.fetchApiData.deleteFavorite(id).subscribe(() => {
+        this.getFavorites();
+      });
+    }
+
   getMovies(): void {
-    this.fetchMovies.getAllMovies().subscribe(( resp: any) => {
+    this.fetchApiData.getAllMovies().subscribe(( resp: any) => {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
