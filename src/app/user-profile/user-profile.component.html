@@ -1,0 +1,101 @@
+ <!-- Tool bar -->
+ <div style="width: 100vw">
+    <mat-toolbar style="text-align: center">
+      <h1 class="toolbar-title">myFlix</h1>
+      <button
+        mat-button
+        class="menu-button"
+        routerLink="movies"
+        (click)="goToMoviesPage()"
+      >
+        Movies
+      </button>
+      <button
+        mat-button
+        class="menu-button"
+        routerLink="profile"
+        (click)="goToProfilePage()"
+      >
+        Profile
+      </button>
+  
+      <button
+        mat-button
+        mat-button-color="primary"
+        style="text-align: right;"
+        class="menu-button"
+        routerLink="logout"
+        (click)="logout()"
+      >
+        Log out
+      </button>
+    </mat-toolbar>
+
+    <div style="display: flex; justify-content: center">
+        <mat-card
+          style="width: 40%; text-align: center; margin: 15px; padding: 30px"
+        >
+          <mat-card-header>
+            <mat-card-title class="profile-title">
+              Your Profile
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content> Username: {{ user.Username }}</mat-card-content>
+          <mat-card-content> Email: {{ user.Email }} </mat-card-content>
+          <mat-card-content>
+            Birthday:
+            {{ user.Birthday | date: "mediumDate" }}
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-raised-button (click)="updateUserDetails()">
+              Update Profile
+            </button> -->
+            <button mat-raised-button color="warn" (click)="deleteUser()">
+              Delete Account
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div style="text-align: center">
+        <h2>Your Favorites</h2>
+        <div
+          class="card-group"
+          style="display: flex; flex-wrap: wrap; justify-content: center"
+        >
+          <div
+            *ngFor="let movie of favorites"
+            style="display: flex; margin: 15px"
+          >
+            <mat-card style="margin: 10px; max-width: 250px">
+              <div
+                class="header"
+                style="display: block; text-align: left; min-height: 80px"
+              >
+                <mat-card-title> {{ movie.Title }} </mat-card-title>
+                <mat-card-subtitle>
+                  Directed by: {{ movie.Director.Name }}
+                </mat-card-subtitle>
+              </div>
+              <mat-card-content>
+                <img
+                  mat-card-image
+                  src="{{ movie.ImagePath }}"
+                  alt="{{ movie.Title }}"
+                />
+              </mat-card-content>
+              <mat-card-actions>
+                <button
+                  class="profile-btn"
+                  mat-raised-button
+                  (click)="deleteFavorite(movie._id)"
+                  color="warn"
+                  style="margin-right: 10px"
+                >
+                  Remove favorite
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
