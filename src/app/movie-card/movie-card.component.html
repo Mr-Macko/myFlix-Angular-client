@@ -1,5 +1,5 @@
-<div style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+<div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 15px;">
+    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto; margin: 10px;">
         <mat-card-header>
         <mat-card-title>{{movie.Title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
