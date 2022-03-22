@@ -52,7 +52,10 @@
      });
    }
  
-    // Deletes selected movie to user favorites.
+  /**
+   * Deletes selected movie to user favorites.
+   * @param id id of selected movie
+   */
    deleteFavorite(id: string): void {
      this.fetchApiData.deleteFavorite(id).subscribe((res: any) => {
        this.snackBar.open(`Successfully removed from favorite movies.`, 'OK', {
@@ -64,7 +67,9 @@
    }
  
 
-  // Open confirmation to delete profile or cancel; if confirmed: deletes account, clears local storage, and reroutes to welcome screen.
+  /**
+   * Open confirmation to delete profile or cancel; if confirmed: deletes account, clears local storage, and reroutes to welcome screen.
+   */
    deleteUser(): void {
      if (confirm('Are you sure? This cannot be undone.')) {
        this.fetchApiData.deleteUser().subscribe(

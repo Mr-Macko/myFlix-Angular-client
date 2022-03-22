@@ -17,7 +17,11 @@ const apiUrl = 'https://max-movie-api.herokuapp.com/';
 export class FetchApiDataService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  // User registration
+  /**
+   * User registration
+   * @param userDetails JSON object of user data
+   * @returns new JSON user data object
+   */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -25,7 +29,11 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-// Login registered user
+  /**
+   * Logs in registered user
+   * @param userDetails JSON object of user data
+   * @returns JSON user data object
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
@@ -33,7 +41,10 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
-  // Get all movies
+  /**
+   * Retrieve all movies
+   * @returns JSON Movie objects array
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -45,7 +56,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get movie by title
+  /**
+   * Retrieve single movie by title
+   * @param title title of movie
+   * @returns JSON Movie object
+   */
   getMovie(title: string): Observable<any> {
     return this.http
       .get(apiUrl + `movies/${title}`, {
@@ -56,7 +71,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get selected director by name
+  /**
+   * Retrieve single genre by name
+   * @param name name of genre
+   * @returns JSON Movie objects array
+   */
   getGenre(name: string): Observable<any> {
     return this.http
       .get(apiUrl + `genres/${name}`, {
@@ -82,7 +101,10 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get user by name
+  /**
+   * Retrieve user by username
+   * @returns JSON User data object
+   */
   getUser(): Observable<any> {
     return this.http
       .get(apiUrl + `users/${username}`, {
@@ -93,7 +115,10 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Get user's favorites
+  /**
+   * Retrieve user's data to extract favorite movies
+   * @returns JSON User data object
+   */
   getFavorites(): Observable<any> {
     return this.http
       .get(apiUrl + `users/${username}`, {
@@ -104,7 +129,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Add movie to user's favorites
+  /**
+   * Add movie by id to user favorites.
+   * @param id selected movie's id
+   * @returns JSON array of favorites
+   */
   addFavorite(id: string): Observable<any> {
     return this.http
       .post(apiUrl + `users/${username}/movies/${id}`, null, {
@@ -115,7 +144,12 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Edit user
+  /**
+   * Update user profile.
+   * @param username user's username
+   * @param userData JSON object of user data
+   * @returns updated JSON object of user data
+   */
   editUserProfile(username: string, userData: object): Observable<any> {
     return this.http
       .put(apiUrl + `users/${username}`, userData, {
@@ -126,7 +160,9 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Delete user
+  /**
+   * Delete user profile.
+   */
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
@@ -138,7 +174,11 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
-  // Delete user's favorite movie
+  /**
+   * Delete movie from user's favorites.
+   * @param id selected movie's id
+   * @returns updated JSON array of favorites
+   */
   deleteFavorite(id: string): Observable<any> {
     return this.http
       .delete(apiUrl + `users/${username}/movies/${id}`, {

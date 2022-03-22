@@ -35,12 +35,19 @@ export class MovieCardComponent implements OnInit {
       });
     }
   
-    // Returns if movie id is in list of user's favorited movies.
+    /**
+     * Returns if movie id is in list of user's favorited movies.
+     * @param id id of selected movie
+     * @returns boolean
+     */
     isFavorited(id: string): boolean {
       return this.favorites.includes(id);
     }
   
-    // Adds selected movie to user favorites.
+    /**
+     * Adds selected movie to user favorites.
+     * @param id id of selected movie
+     */
     handleFavorite(id: string): void {
       this.fetchApiData.addFavorite(id).subscribe(() => {
         this.getFavorites();
@@ -48,7 +55,10 @@ export class MovieCardComponent implements OnInit {
     }
   
    
-    // Deletes selected movie to user favorites.
+    /**
+    * Deletes selected movie to user favorites.
+    * @param id id of selected movie
+    */
     handleUnfavorite(id: string): void {
       this.fetchApiData.deleteFavorite(id).subscribe(() => {
         this.getFavorites();
@@ -63,7 +73,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-   // Opens synopsis dialog
+   /**
+   * Opens synopsis dialog.
+   * @param title movie's title
+   * @param imagePath movie's production poster
+   * @param description movie's description
+   */
    openSynopsis(title: string, imagePath: any, description: string): void {
     this.dialog.open(MovieSynopsisComponent, {
       data: {
@@ -75,7 +90,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //opens genre dialog
+  /**
+   * Opens genre dialog.
+   * @param name genre's name
+   * @param description genres's descripton
+   */
   openGenre(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: {
@@ -86,7 +105,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  //opens director dialog
+  /**
+   * Opens the director dialog.
+   * @param name director's name
+   * @param bio director's biography
+   * @param birth director's birth year
+   */
   openDirector(name: string, bio: string, birth: string): void {
     this.dialog.open(DirectorComponent, {
       data: {

@@ -21,7 +21,11 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Sends request to API for user login
+  /**
+   * Sends request to API for jwt token and user data, then stores response in local storage.
+   * App then routes to movie view and confirms login with snack bar message.
+   * @returns snackbar message confirmation
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       //successful login
