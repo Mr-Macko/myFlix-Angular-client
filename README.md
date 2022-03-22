@@ -1,5 +1,5 @@
 # myFlix Angular Client
-This single-page, responsive application is the client-side for an application called myFlix based on its existing server-side code[here](https://github.com/Mr-Macko/movie_api) (REST API and database), with supporting documentation. It features  routing, rich interactions, several interface views, and a polished user experience.
+This single-page, responsive application is the client-side for an application called myFlix based on its existing [server-side code](https://github.com/Mr-Macko/movie_api) (REST API and database), with supporting documentation. It features  routing, rich interactions, several interface views, and a polished user experience.
 
 The frontend views for this application consists of the following:
 - Welcome view
