@@ -3,7 +3,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
-import { GenreComponent } from '../genre/genre.component';
+import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
 
 @Component({
